@@ -1,4 +1,10 @@
 
+# Laravel notes
+Website developed using Jeckyll and the Just the Docs theme.
+
+https://pmarsceill.github.io/just-the-docs/docs/navigation-structure/
+
+
 
 To start the local server
 ```
