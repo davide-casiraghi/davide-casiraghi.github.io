@@ -39,6 +39,18 @@ plugins:
 color_scheme: dark
 
 
+collections:
+  snippets:
+    output: true
+    id: true
+    title: true
+    description: true
+  guides:
+    output: true
+    id: true
+    title: true
+    description: true
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

@@ -38,6 +38,17 @@ plugins:
 # Color scheme supports "light" (default) and "dark"
 color_scheme: dark
 
+collections:
+  snippets:
+    output: true
+    id: true
+    title: true
+    description: true
+  guides:
+    output: true
+    id: true
+    title: true
+    description: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
