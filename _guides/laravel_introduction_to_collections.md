@@ -1,6 +1,7 @@
 ---
 last_modified_on: "2021-01-28"
 title: Laravel - Introduction to Laravel Collections
+layout: page
 description: A brief introduction to Collections
 series_position: null
 author_github: https://github.com/davide-casiraghi/
@@ -171,6 +172,3 @@ I found out that it helps to speed up my dev flow since I can play with the data
 - [Two Types of Collections in Laravel ](https://medium.com/@lynnlin827/two-types-of-collections-in-laravel-888d43858c4e) by Lynn Lin  
 - [toBase function in Laravel Eloquent](https://www.infyom.com/blog/tobase-function-in-laravel-eloquent
 ) by Mitul Golakiya
-
-
-

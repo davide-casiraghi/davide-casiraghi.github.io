@@ -1,6 +1,7 @@
 ---
 last_modified_on: "2021-01-28"
 title: Useful Laravel Packages
+layout: page
 description: A collection of useful Laravel packages
 series_position: null
 author_github: https://github.com/davide-casiraghi/
@@ -77,5 +78,3 @@ allows interacting directly with the db data and to see the output of **Eloquent
 I found out that it helps to speed up my dev flow since I can play with the data checking the output immediately, and without writing code in the project I'm working on.
 
 [laravel/tinker](https://tinkerwell.app/)
-
-

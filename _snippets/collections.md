@@ -1,6 +1,7 @@
 ---
 id: collections
 title: Collections
+layout: page
 description: List of collection methods
 ---
 
@@ -33,4 +34,3 @@ $collection->reject(function ($name) {
 $collection->toArray(); 
 // ['taylor', 'abigail']
 ```
-

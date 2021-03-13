@@ -1,6 +1,7 @@
 ---
 id: eloquent
 title: Eloquent
+layout: page
 description: List of eloquent methods
 ---
 

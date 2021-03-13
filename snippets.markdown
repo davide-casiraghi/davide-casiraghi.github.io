@@ -6,17 +6,8 @@ permalink: /snippets/
 
 # Snippets
 
-Snippets page
+Snippets are little pieces of code that are an example already tested to provide and example of use.
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
-aaa
 
 <ul>
   {% for snippet in site.snippets %}

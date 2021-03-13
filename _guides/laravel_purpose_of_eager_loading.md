@@ -1,6 +1,7 @@
 ---
 last_modified_on: "2021-01-27"
 title: Laravel - Eloquent Eager Loading
+layout: page
 description: Explain the purpose of Eager Loading and the N+1 query problem
 series_position: null
 author_github: https://github.com/davide-casiraghi/
