@@ -12,12 +12,12 @@ tags: ["language: php", "framework: laravel"]
 # Events and Listeners
 
 ## What is an event?
-- Represent an event that can happen in your application
-- Event classes are typically stored in app/Events
+- Represent an event that can happen in your application.
+- Event classes are typically stored in **app/Events**.
 
 ## What is a listener?
 - Some actions triggered when the event happen.
-- Listeners classes are stored in app/Listeners.
+- Listeners classes are stored in **app/Listeners**.
 - An event listener is a procedure or function in a computer program that waits for an event to occur.
 
 
@@ -58,22 +58,24 @@ This directories are created for you as you generate events and listeners using 
 
 ## Can one event have multiple listeners?
 - Yes a single event can have multiple listeners that do not depend on each other.
-- This is great to decouple (disaccoppiare) various aspects of your application.
+- This is great to decouple various aspects of your application.
 - eg
     - Event: OrderShipped
     - Listener:
-        - Slack notification
-        - etc..
-
+        - SendShipmentMailNotification
+        - SendShipmentSlackNotification
 
 ## Why do I have to manually register an event? Does it have any advantage?
+I still have to figure out the why....   
+
 https://laravel.com/docs/8.x/events#manually-registering-events
 
 ## Event Discovery
 
-Instead of registering events and listeners manually in the $listen array of the EventServiceProvider, you can enable automatic event discovery.
-- When event discovery is enabled, Laravel will automatically find and register your events and listeners by scanning your application's Listeners directory.
+Instead of registering events and listeners manually, adding them to the $listen array of the EventServiceProvider, you can enable automatic event discovery.
+- When event discovery is enabled, Laravel will automatically find and register all the events and listeners scanning this two directories:
     - app/Listeners
+    - app/Events
 - In addition, any explicitly defined events listed in the EventServiceProvider will still be registered.
     - app/Providers/EventServiceProvider.php
         - protected $listen[]
@@ -99,8 +101,7 @@ public function shouldDiscoverEvents()
 
 ##  How to define and event?
 
-- Eg.OrderShipped
-- Let's assume our generated OrderShipped event receives an Eloquent ORM object.
+Let's assume our generated OrderShipped event receives an Eloquent ORM object `Order $order`.
 ``` php
 <?php
 
@@ -130,11 +131,11 @@ class OrderShipped
 }
 ```
 
-- As you can see, this event class contains no logic.
-    - It is a container for the Order instance that was purchased.
-    - The SerializesModels trait used by the event will gracefully serialize any Eloquent models if the event object is serialized using PHP's serialize function.
-        - Check Laravel serialisation in Evernote
-            - So if I format the dates in the model I will get the formatted dates.
+As you can see, this event class contains no logic.
+- It is a container for the Order instance that was purchased.
+- The SerializesModels trait used by the event will gracefully serialize any Eloquent models if the event object is serialized using PHP's serialize function.
+    - Have a look to [Serialization](/guides/laravel_serialization).
+    - So if I format the dates in the model I will get the formatted dates.
 
 ## How to define a Listener?
 https://laravel.com/docs/8.x/events#defining-listeners
