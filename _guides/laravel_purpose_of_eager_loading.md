@@ -1,4 +1,5 @@
 ---
+layout: post
 last_modified_on: "2021-01-27"
 title: Laravel - Eloquent Eager Loading
 layout: page

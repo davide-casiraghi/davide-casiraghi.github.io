@@ -38,6 +38,9 @@ plugins:
 # Color scheme supports "light" (default) and "dark"
 color_scheme: dark
 
+
+
+# Collections
 collections:
   snippets:
     output: true

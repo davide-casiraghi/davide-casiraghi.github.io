@@ -1,4 +1,5 @@
 ---
+layout: post
 id: tailwind
 title: Tailwind
 description: List of tailwind snippets

@@ -1,4 +1,5 @@
 ---
+layout: post
 last_modified_on: "2021-01-28"
 title: Laravel - Introduction to Laravel Collections
 layout: page

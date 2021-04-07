@@ -1,4 +1,5 @@
 ---
+layout: post
 id: eloquent
 title: Eloquent
 layout: page

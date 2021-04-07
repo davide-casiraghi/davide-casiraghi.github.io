@@ -1,4 +1,5 @@
 ---
+layout: post
 id: collections
 title: Collections
 layout: page
