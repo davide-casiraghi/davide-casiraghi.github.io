@@ -135,12 +135,11 @@ As you can see, this event class contains no logic.
 - It is a container for the Order instance that was purchased.
 - The SerializesModels trait used by the event will gracefully serialize any Eloquent models if the event object is serialized using PHP's serialize function.
     - Have a look to [Serialization](/guides/laravel_serialization).
-    - So if I format the dates in the model I will get the formatted dates.
 
 ## How to define a Listener?
 https://laravel.com/docs/8.x/events#defining-listeners
 - Event listeners receive the event instance in their handle() method.
-    - In our case we Access the order using $event->order.
+    - In our case we access the order using $event->order.
 - Within the handle method, you may perform any actions necessary to respond to the event
 - The event:generate command will automatically import the proper event class and type-hint the event on the handle method.
 
