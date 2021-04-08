@@ -69,6 +69,31 @@ $greeting(); // Returns "Hello Philip"
 ```
 
 
+## Example of closure
+
+``` php
+<?php
+
+// Closure that sum two numbers
+$addition = function ($first, $second) {
+    return $first + $second;
+};
+
+// Closure that subtract two numbers
+$subtraction = function ($first, $second) {
+    return $first - $second;
+};
+
+// Function that get one of this closure as parameter and execute it
+function math(Closure $type, $first, $second) {
+    return $type($first, $second);
+}
+
+echo math($addition, 2, 2);
+echo PHP_EOL; // New line
+echo math($subtraction, 5, 3);
+```
+
 ##  Why in this closure it passes variables in different ways? 😄
 
 Because:
@@ -102,5 +127,5 @@ $deleteDirectory("path/to/directoy");
 ##  Why to use them ?
 I use them when I find a monster function that I want to refactor.
   - I start grouping things that at the end should return a variable.
-  - And I make them an anonymous function.
+  - And, I make them an anonymous function.
   - Then if I need to use them in different functions I make them a function.
