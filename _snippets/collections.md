@@ -6,8 +6,7 @@ layout: page
 description: List of collection methods
 ---
 
-
-[What are Laravel Collections?](../../guides/beginner/laravel_introduction_to_collections/)
+[What are Laravel Collections?](/guides/laravel_introduction_to_collections).
 
 
 ### map()
