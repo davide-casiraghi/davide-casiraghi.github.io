@@ -15,10 +15,11 @@ tags: ["language: php", "framework: laravel"]
 From: https://programmingpot.com/laravel/laravel-service-provider/
 
 ## What Is a Service Provider in Laravel?
-- If the service container is something that allows you to define bindings and inject dependencies,
-- Then the service provider is the place where it happens.
+- If the **service container** is something that allows you to define bindings and inject dependencies.
+- Then the **service provider** is the place where these bindings happen.
 
-Service providers are the central place of all Laravel application bootstrapping. Your own application, as well as all of Laravel’s core services, are bootstrapped via service providers.
+Service providers are the central place of all Laravel application bootstrapping.   
+Your own application, as well as all of Laravel’s core services, are bootstrapped via service providers.
 
 ## But, what do we mean by “bootstrapped”?
 In general, we mean registering things, including registering service container bindings, event listeners, middleware, and even routes.
@@ -26,10 +27,11 @@ In general, we mean registering things, including registering service container 
 ## Where are defined the Service Providers?
 `app/Providers/`
 
-## How to Use Laravel Service Provider ?
+## How to Use Laravel Service Providers ?
 There are two important methods, boot, and register, that your service provider may implement.
 
-Let’s have a quick look at one of the core service providers to understand what it does.
+Let’s have a quick look at one of the core service providers to understand what it does.   
+
 Go ahead and open the:
 vendor/laravel/framework/src/Illuminate/Cache/CacheServiceProvider.php
 ``` php
@@ -52,8 +54,7 @@ The important thing to note here is:
 - the register method, which allows you to define service container bindings.
   As you can see, there are three bindings for the cache, cache.store and memcached.connector services.
 
-
-
+  
 ---
 
 From: https://programmingpot.com/laravel/laravel-service-provider/
@@ -72,7 +73,7 @@ namespace App\Providers;
   
 use Illuminate\Support\ServiceProvider;
   
-class EProgrammingPotServiceProvider extends ServiceProvider
+class ProgrammingPotServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -98,7 +99,9 @@ class EProgrammingPotServiceProvider extends ServiceProvider
 
 Then we need to register it.
 
- ## How to Register a Service Provider ?
+
+## How to Register a Service Provider ?   
+
 To register your service provider, you just need to add an entry to the array of service providers in the config/app.php file.
 
 config/app.php
@@ -113,7 +116,7 @@ config/app.php
 ],
 ```
 
-But the service provider we’ve created is almost a blank template and of no use at the moment.
+But the service provider we’ve created is almost a blank template and of no use at the moment.   
 In the next section, we’ll go through a couple of practical examples to see what you could do with the register and boot methods.
 
 ## What to put in the boot and register methods?

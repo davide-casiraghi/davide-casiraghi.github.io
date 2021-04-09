@@ -21,5 +21,4 @@ To use the just-the-docs template on Github I had to create 2 different config f
 bundle exec jekyll serve --config _config_local.yml
 ```
 
-
 Browse to http://localhost:4000

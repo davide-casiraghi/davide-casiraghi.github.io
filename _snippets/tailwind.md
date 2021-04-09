@@ -59,7 +59,7 @@ Div
 ```
 
 Text
-```html
+``` html
 <div class="flex w-10 h-10">
     <a href="#" class="m-auto">
         {{$key}}
@@ -70,7 +70,8 @@ Text
 
 
 ###  Breakpoints
-- Tailwind ships with 4 default brakepoints
+
+Tailwind ships with 4 default brakepoints
     - sm (640px)
     - md (768px)
     - Lg (1024px)
@@ -94,7 +95,7 @@ https://tailwindcss.com/docs/grid-column
 
 ---
 
-### Animate bouce
+### Animate bounce
 
 This code create an animated arrow that point down.
 
@@ -110,7 +111,7 @@ This code create an animated arrow that point down.
 
 ---
 
-Divide
+### Divide
 
 Divider classes to add dividers between your elements instead of using borders.
 
