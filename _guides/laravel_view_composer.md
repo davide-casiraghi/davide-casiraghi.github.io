@@ -15,7 +15,9 @@ tags: ["language: php", "framework: laravel"]
 ## What is a View Composer ?
 
 View composers are callbacks or class methods that are called when a view is rendered.
-- If you have data that you want to be bound to a view each time that view is rendered, a view composer can help you organise that logic into a single location.
+- We can use them to avoid passing data to the views in the controllers.
+- So to shorten the code in the controllers.
+- It bounds data to a view each time that view is rendered, organizing that logic into a single location.
 
 ---
 
@@ -60,10 +62,11 @@ class PostCrontroller extends Controller{
 
 ### Can I share a variable across any view ? (Option 1)
 
-I can share the data across any view!
+Yes, I can share the data across any view!
 - Maybe we don’t use it often but can be useful.
-- We have to use it few times, because we are creating a query!!
-- We are hitting the DB every single time a view is loaded. Not overuse this! Don’t share unless it’s absolutely necessary.
+- ALERT: 
+  - We have to use it few times, because we are creating a query!!
+  - We are hitting the DB every single time a view is loaded. Not overuse this! Don’t share unless it’s absolutely necessary.
 
 We will do our edit now in the AppServiceProvider.php, but we can also create our own service provider just for this.
 
@@ -78,10 +81,10 @@ public function boot()
     View::share('channels', Channel::orderBy('name')->get());
 }
 ```
-- Now every singe view will have a channels variable!!
+- Now every singe view will have a channels variable!
 
 Then I can shorten my controllers because the variable is already accessible:
-```
+``` php
 class PostCrontroller extends Controller{
     public function create(){
         return view(‘post.create);
@@ -94,7 +97,7 @@ class PostCrontroller extends Controller{
 ### Can I share a variable just with specific views ? (Option 2)
 Yes, with View Composers!!
 
-View composer attaches to specific views some datas
+View composer attaches to specific views some data.
 - First argument:
   - The views to which we want to pass this variable
   - string with view name or array of views
@@ -182,7 +185,7 @@ public function boot()
 
 --- 
 
-other example 🙂 to use eg.. to import a service
+### Other example, injecting a repo
 
 
 app/Http/View/Composer/CategoryComposer.php
@@ -195,7 +198,7 @@ use App\Repositories\CategoryRepository;
 
 class CategoryComposer{
 
-protected $categories;
+protected CategoryRepository $categoryRepository;
 
 
 /**
@@ -204,9 +207,9 @@ protected $categories;
 * @param CategoryRepository $categories
 * @return void
 */
-public function __construct(CategoryRepository $categories)
+public function __construct(CategoryRepository $categoryRepository)
 {
-    $this->categories = $categories;
+    $this->categoryRepository = $categoryRepository;
 }
 
 
@@ -218,7 +221,7 @@ public function __construct(CategoryRepository $categories)
 */
 public function compose(View $view)
 {
-    $view->with('categories', $this->categories->all());
+    $view->with('categories', $this->categoryRepository->all());
 }
 }
 ```
@@ -265,7 +268,7 @@ public function boot()
 }
 ```
 - We can pass just the dir with the partials related to the channels
-- We don’t need even an array any more.
+- We don’t need an array anymore.
 
 ---
 
