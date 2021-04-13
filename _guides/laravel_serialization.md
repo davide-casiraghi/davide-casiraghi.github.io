@@ -17,15 +17,15 @@ https://laravel.com/docs/8.x/eloquent-serialization#introduction
 
 ## What is serialization?
 - It's a way to store the values of an object into a text string format.
-- To convert our models, and our relationships to arrays or JSON.
+- To convert our models, and our relationships to **arrays** or **JSON**.
 
 ## When is it used?
 - Usually when we build JSON APIs, we will often need to convert our models and our relationships to arrays or JSON.
 
 ## How does Laravel address this?
-- Eloquent includes convenient methods for
-    - making these conversions
-    - controlling which attributes are included in your serializations.
+- Eloquent includes convenient methods for:
+  - making these conversions
+  - controlling which attributes are included in your serializations.
 
 ---
 
@@ -39,13 +39,13 @@ $user = App\Models\User::first();
 return $user->attributesToArray();
 ```
 
-### How to convert to array the loaded model’s attributes and its loaded relationships?
+### How to convert to array the loaded model’s attributes and its loaded relationships (eager loading)?
 With the toArray method:
 ``` php
 $user = App\Models\User::with('roles')->first();
 return $user->toArray();
 ```
-- This method is recursive, so all attributes and all relations (including the relations of relations) will be converted to arrays.
+- This method is recursive, so all attributes and loaded relations (eager loading) (including the relations of relations) will be converted to arrays.
 
 ### Can I convert the entire collections of models to array?
 yes
@@ -76,7 +76,8 @@ return $user->toJson(JSON_PRETTY_PRINT);
 - https://www.php.net/manual/en/function.json-encode.php
 
 ### How to automatically call the toJson method?
-Casting a model or collection to a string, will automatically call the toJson method on the model or collection.
+Casting a model or collection to a string.  
+This will automatically call the toJson method on the model or collection.
 ``` php
 $user = App\Models\User::find(1);
 return (string) $user;
@@ -137,7 +138,7 @@ class User extends Model
 
 ## Can I append extra custom attributes To JSON or Array when I cast my model even if they are not part of my model?
 
-Yes, to do this in the model
+Yes, to do this in the model:
 1.  first define an accessor for the value.
 2. then add the attribute name to the appends property.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 last_modified_on: "2021-01-27"
-title: Laravel - Authorization and Middlewares
+title: Laravel - Authorization
 description: Explain laravel authorization and middlewares
 series_position: null
 author_github: https://github.com/davide-casiraghi/
@@ -165,21 +165,6 @@ And also I can change the name of the authorisation in the @can directive I used
 ----
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## How to manage user roles?
 - Eg. Administrator, manager etc..
 - And check Eg. isAdmin()
@@ -274,114 +259,11 @@ public function boot()
 
 https://laracasts.com/series/laravel-6-from-scratch/episodes/53?autoplay=true
 
-We can also authenticate at the route level using a middleware.
+We can also authenticate at the route level using a [middleware](/guides/laravel_middleware).
 
 ``` php 
 Route::get(‘/reports’, function (){
     Return ’the secret reports’;
 })->middleware(‘can:view_reports');
 ```
-
-### Diving deeper in the middleware
-
-#### Example 1
-In this example we see two routes that require two middleware to be verified to access them.
-
-routes/web.php
-``` php 
-Route::group(['middleware' => ['is_admin', 'phone_verified']], function() {
-  Route::get('/users', [UserController::class, 'index'])->name('users.index');
-  Route::get('/events', [EventController::class, 'index'])->name('events.index');
-});
-``` 
-
-app/Http/Kernel.php
-``` php 
-protected $routeMiddleware = [
-  ...
-  'phone_verified' => \App\Http\Middleware\EnsurePhoneIsVerified::class,
-  ...
-];
-``` 
-
-
-app/Http/Middleware/EnsurePhoneIsVerified.php
-``` php 
-<?php
-
-namespace App\Http\Middleware;
-
-use Closure;
-use Illuminate\Support\Facades\Auth;
-
-
-/**
- * When the user still has to verify the phone number,
- * This middleware shows on any page the flash message 'Please verify your phone number'
- * with a link to the 'verify phone number' page.
- */
-class EnsurePhoneIsVerified
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
-    {
-        if (
-            !empty($request->user()->profile->phone_verification_code)
-            && empty($request->user()->profile->phone_verified_at))
-        {
-            session()->flash('warning', "<a href='/verifyPhoneNumber'>Please verify your phone number</a> <br> If you haven't got the verification code via SMS <a href='#'>send it again</a>.");
-        }
-
-        return $next($request);
-    }
-}
-``` 
-
-#### Example 2
-In this other middleware we redirect the user that is not authorized to the homepage.
-
-app/Http/Kernel.php
-``` php
-protected $routeMiddleware = [
-...
-'is_admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
-...
-];
-``` 
-
-app/Http/Middleware/EnsureUserIsAdmin.php
-``` php
-<?php
-
-namespace App\Http\Middleware;
-
-use App\Providers\RouteServiceProvider;
-use Closure;
-
-class EnsureUserIsAdmin
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
-    {
-        if (!$request->user()->isAdmin()) {
-            return redirect(RouteServiceProvider::HOME)
-                ->with('success','This section of the website is accessible just by admins');
-        }
-
-        return $next($request);
-    }
-}
-``` 
 
