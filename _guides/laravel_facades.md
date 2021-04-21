@@ -99,13 +99,20 @@ public function boot(){
 }
 ```
 
-3. Define the facade
-...add details here...
-   17:00....
+3. Define the Facade
+app/Facades/Postcard.php
+- We are grabbing our entire application and we are resolving [$name].
+- In this case we are setting $ name = 'Postcard'
+  - To match the same string we have defined in the AppServiceProvider
+- Inside this Postcard we are calling a dynamic method. That we receive through the callStatic method
+  - callStatic() is a PHP magic method that grabs any static method call to this class, when a class doesn't have a static method with that name.
+  - we are calling hello(), but this method it doesn't exist on this Postcard class
+  - the hello() method is inside the service, but notice that this is not static!
+    
  ``` php
  <?php
  
-  namespace App/Services;
+  namespace App/Facades;
  
   class Postcard{
     protected static function resolveFacade($name){
@@ -127,5 +134,9 @@ Route::get('/send-a-postcard', function(){
     Postcard::hello('Hello from facade', 'info@test.com');
 });
 ```
-
+One more thing. (19:00)
+We have a file /bootstrap/cache/services.php
+  - in this class we have a list
+  - this are all aliases
+  - 
 
