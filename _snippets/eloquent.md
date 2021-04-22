@@ -26,6 +26,10 @@ $user = User::find(1, ['name', 'surname']);
 */
 ```
 
+``` php
+//  select all users with IDs 1-4 and to select only 'name' column?
+User::find([1,2,3,4], ['name']);
+```
 ### findOrFail()
 
 ``` php
